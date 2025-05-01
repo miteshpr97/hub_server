@@ -2,8 +2,12 @@ const express = require('express')
 require('dotenv').config();
 const connectDB  = require('./config/db')
 const userRoute = require('./route/userRoute')
+const productRoute = require('./route/productRoute')
 const cors = require('cors')
 const cookieParser = require('cookie-parser');
+
+
+// require("./utils/cornjob.js")
 
 const PORT = process.env.PORT || 5000
 const app = express()
@@ -26,11 +30,15 @@ app.use(cookieParser());
 
 connectDB();
 app.use('/api/v1', userRoute);
+app.use('/api/v1', productRoute)
 
 app.listen(PORT, () => {
     console.log(`🚀 Server listening on port ${PORT}`);
 });
 
+
+// BEEQUUEUE  
+  //BULL
 
 
 

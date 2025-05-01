@@ -8,8 +8,7 @@ const sesClient = new SESClient({ region: REGION, credentials:{
     // sessionToken: process.env.AWS_SESSION_TOKEN, // Optional, if using temporary credentials
 } });
 
-console.log(process.env.AWS_SES_ACCESS_KEY, "access key");
-console.log(process.env.AWS_SES_SECRET_KEY, "secret key");
+
 
 module.exports = { sesClient };
 
