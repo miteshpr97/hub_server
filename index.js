@@ -32,7 +32,7 @@ app.use(cookieParser());
 connectDB();
 app.use('/api/v1', userRoute);
 app.use('/api/v1', productRoute)
-app.use('/api/v1', paymentRoute)
+app.use('/', paymentRoute)
 
 
 app.listen(PORT, () => {

@@ -6,7 +6,7 @@ const paymentController = require("../controller/paymentController")
 
 
 
-router.post('/payment', paymentController.payment);
+router.post('/payment/create', paymentController.payment);
 router.post('/payment/webhook', paymentController.webhook)
 
 
