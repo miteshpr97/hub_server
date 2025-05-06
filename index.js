@@ -5,6 +5,7 @@ const userRoute = require('./route/userRoute')
 const productRoute = require('./route/productRoute')
 const cors = require('cors')
 const cookieParser = require('cookie-parser');
+const paymentRoute = require('./route/paymentRoute')
 
 
 // require("./utils/cornjob.js")
@@ -31,6 +32,8 @@ app.use(cookieParser());
 connectDB();
 app.use('/api/v1', userRoute);
 app.use('/api/v1', productRoute)
+app.use('/api/v1', paymentRoute)
+
 
 app.listen(PORT, () => {
     console.log(`🚀 Server listening on port ${PORT}`);

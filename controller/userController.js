@@ -107,7 +107,14 @@ exports.login = async (req, res) => {
       maxAge: 24 * 60 * 60 * 1000 // 1 day
     });
 
-    res.status(200).json({ message: "Login successful", token });
+    res.status(200).json({ message: "Login successful", token,
+      user: {
+        _id: userExists._id,
+        email: userExists.email,
+        name: userExists.name
+      }
+
+     });
 
   } catch (error) {
     res.status(500).json({ message: "user is not found" })

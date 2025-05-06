@@ -3,22 +3,28 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true 
+        required: true
     },
     email: {
         type: String,
-        required: true 
+        required: true
     },
     password: {
         type: String,
-        required: true 
+        required: true
     },
     status: {
         type: String,
         enum: ['active', 'deactive'],
         default: 'active'
     },
-
+    isPremium: {
+        type: Boolean,
+        default: false,
+    },
+    membershipType: {
+        type: String,
+    },
     createdAt: {
         type: Date,
         default: Date.now,
