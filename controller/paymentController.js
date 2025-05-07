@@ -14,6 +14,10 @@ exports.payment = async (req, res) => {
     const { membershipType, firstName, lastName, emailId, userId } = req.body;
 
 
+    console.log(emailId);
+    
+
+
     
     const order = await razorpayInstance.orders.create({
       amount: membershipAmount[membershipType] * 100,
@@ -26,6 +30,11 @@ exports.payment = async (req, res) => {
         membershipType: membershipType,
       },
     });
+
+
+
+    console.log(order, "order data");
+    
 
    
     // save in my data base
@@ -64,8 +73,6 @@ exports.payment = async (req, res) => {
 
 
 }
-
-
 
 
 exports.webhook = async(req, res) =>{
@@ -119,6 +126,16 @@ exports.webhook = async(req, res) =>{
     return res.status(500).json({ msg: err.message });
   }
 
+}
+
+
+
+exports.verifyPremium = async(req, res) =>{
+  const user = req.user.toJSON();
+  if (user.isPremium) {
+    return res.json({ ...user });
+  }
+  return res.json({ ...user });
 }
 
  // handler: verifyPremiumUser,
