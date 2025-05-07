@@ -89,8 +89,13 @@ exports.webhook = async(req, res) =>{
     // Udpate my payment Status in DB
     const paymentDetails = req.body.payload.payment.entity;
 
+    console.log(paymentDetails);
+    
+
     const payment = await Payment.findOne({ orderId: paymentDetails.order_id });
     payment.status = paymentDetails.status;
+
+    
     await payment.save();
     console.log("Payment saved");
 
@@ -101,7 +106,7 @@ exports.webhook = async(req, res) =>{
 
     await user.save();
 
-    
+
     // Update the user as premium
     // if (req.body.event == "payment.captured") {
     // }
